@@ -8,18 +8,18 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      compName:
-        type: string
-        description: Component Name
-      versionNumber:
-        type: string
-        description: Version Number
       fileName:
         type: string
         description: File Name
       folderName:
         type: string
         description: Folder Name
+      fileName2:
+        type: string
+        description: File Name 2
+      folderName2:
+        type: string
+        description: Folder Name 2
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,7 +35,7 @@ jobs:
 
       # Runs download artifact
       - name: Run a one-line script
-        run: curl -k -u lalit-ku@hcl.com:Welcome1# "https://launch.prod.hclpnp.com:8443/cli/version/downloadArtifacts?component=${{ github.event.inputs.compName }}&version=${{ github.event.inputs.versionNumber }}" --output ./files/${{ github.event.inputs.folderName }}/${{ github.event.inputs.fileName }}
+        run: wget "https://hclcr.io/files/devops/launch/plugins/${{ github.event.inputs.folderName2 }}/${{ github.event.inputs.fileName2 }}" --output ./files/${{ github.event.inputs.folderName }}/${{ github.event.inputs.fileName }}
 
       # Runs a set of commands using the runners shell
       - name: Commit changes
