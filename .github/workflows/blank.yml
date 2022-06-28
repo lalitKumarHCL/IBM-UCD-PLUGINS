@@ -49,4 +49,4 @@ jobs:
           author_name: Lalit Kumar
           author_email: lalit-ku@hcl.com
           message: "Added ${{ github.event.inputs.fileName }}"
-          add: files/${{ github.event.inputs.folderName }}/${{ github.event.inputs.fileName }}
+          add: '.'
