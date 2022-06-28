@@ -31,7 +31,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       # Runs download artifact
       - name: Run a one-line script
@@ -41,14 +41,11 @@ jobs:
           mkdir files
           mkdir "files/${{ github.event.inputs.folderName }}"
           mv ${{ github.event.inputs.fileName }} "files/${{ github.event.inputs.folderName }}/"
-          ls -a
-          cd "files/${{ github.event.inputs.folderName }}"
-          ls -a
       # Runs a set of commands using the runners shell
-      #- name: Commit changes
-        #uses: EndBug/add-and-commit@v9
-        #with:
-          #author_name: Lalit Kumar
-          #author_email: lalit-ku@hcl.com
-          #message: 'Your commit message'
-          #add: files/${{ github.event.inputs.folderName }}/${{ github.event.inputs.fileName }}
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Lalit Kumar
+          author_email: lalit-ku@hcl.com
+          message: "Added ${{ github.event.inputs.fileName }}"
+          add: files/${{ github.event.inputs.folderName }}/${{ github.event.inputs.fileName }}
