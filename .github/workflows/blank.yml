@@ -38,6 +38,7 @@ jobs:
         run: |
           wget "https://hclcr.io/files/devops/launch/plugins/${{ github.event.inputs.folderName2 }}/${{ github.event.inputs.fileName2 }}"
           mv ${{ github.event.inputs.fileName2 }} ${{ github.event.inputs.fileName }}
+          mkdir "files/${{ github.event.inputs.folderName }}/"
           mv ${{ github.event.inputs.fileName }} "files/${{ github.event.inputs.folderName }}/"
           ls -a
           cd "files/${{ github.event.inputs.folderName }}/"
