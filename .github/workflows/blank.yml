@@ -37,6 +37,10 @@ jobs:
       - name: Run a one-line script
         run: |
           wget "https://hclcr.io/files/devops/launch/plugins/${{ github.event.inputs.folderName2 }}/${{ github.event.inputs.fileName2 }}"
+          mv ${{ github.event.inputs.fileName2 }} ${{ github.event.inputs.fileName }}
+          mv ${{ github.event.inputs.fileName }} "files/${{ github.event.inputs.folderName }}/"
+          ls -a
+          cd "files/${{ github.event.inputs.folderName }}/"
           ls -a
       # Runs a set of commands using the runners shell
       #- name: Commit changes
