@@ -34,7 +34,7 @@ jobs:
       - name: Docker
         run: |
           docker pull ${{ github.event.inputs.fileName }}
-          docker save ${{ github.event.inputs.fileName }} > "${{ github.event.inputs.fileName }}.tar"
+          docker save -o "${{ github.event.inputs.fileName }}.tar" ${{ github.event.inputs.fileName }}
           ls -a
 
       # Runs download artifact
