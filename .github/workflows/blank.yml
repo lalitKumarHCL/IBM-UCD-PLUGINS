@@ -31,7 +31,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      
+      - name: Docker
+        run: |
+          docker pull ${{ github.event.inputs.fileName }}
+          docker save ${{ github.event.inputs.fileName }} > "${{ github.event.inputs.fileName }}.tar"
+          ls -a
 
       # Runs download artifact
       - name: Run a one-line script
