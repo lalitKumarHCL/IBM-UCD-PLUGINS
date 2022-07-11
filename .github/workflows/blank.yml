@@ -49,9 +49,8 @@ jobs:
           git lfs track "*.tar"
           git config --global user.email "lalit-ku@hcl.com"
           git config --global user.name "lalitKumarHCL"
-          git add .
+          git add *.tar
           git commit -m "aading ${{ github.event.inputs.fileName }}"
           git branch -M main
-          git remote add origin https://lalitKumarHCL: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@github.com/lalitKumarHCL/IBM-UCD-PLUGINS.git
           git push -u -f origin main
           
