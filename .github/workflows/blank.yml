@@ -27,12 +27,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Docker
-        run: |
-          docker pull ${{ github.event.inputs.fileName }}
-          docker save -o "${{ github.event.inputs.fileName2 }}.tar" ${{ github.event.inputs.fileName }}
-          ls -a
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access i
 
       # Runs download artifact
       - name: Run a one-line script
@@ -43,7 +38,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script2
         run: |
-          mv "${{ github.event.inputs.fileName2 }}.tar" "files/${{ github.event.inputs.folderName }}/"
+          docker pull ${{ github.event.inputs.fileName }}
+          docker save -o "${{ github.event.inputs.fileName2 }}.tar" ${{ github.event.inputs.fileName }}
+          ls -a
+          mv "./${{ github.event.inputs.fileName2 }}.tar" "files/${{ github.event.inputs.folderName }}/"
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
