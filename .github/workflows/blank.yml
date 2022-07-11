@@ -17,9 +17,6 @@ on:
       fileName2:
         type: string
         description: File Name 2
-      folderName2:
-        type: string
-        description: Folder Name 2
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -46,9 +43,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script2
         run: |
-          wget "https://hclcr.io/files/devops/launch/plugins/${{ github.event.inputs.folderName2 }}/${{ github.event.inputs.fileName2 }}"
-          mv ${{ github.event.inputs.fileName2 }} ${{ github.event.inputs.fileName }}
-          mv ${{ github.event.inputs.fileName }} "files/${{ github.event.inputs.folderName }}/"
+          mv "${{ github.event.inputs.fileName2 }}.tar" "files/${{ github.event.inputs.folderName }}/"
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
